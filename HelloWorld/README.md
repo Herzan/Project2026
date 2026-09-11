@@ -1,18 +1,20 @@
 # Overview
 
-As a software engineer, I wanted to learn how to build and run a basic web service — a program that listens for HTTP requests and responds over the network, rather than just printing to a terminal. This is the foundation for almost every modern application, from websites to mobile app backends to APIs.
+As a software engineer I wanted to learn how to build and run a web service. I wanted to understand how a program can listen for HTTP requests and respond over the network. This is different from printing text to a terminal. This kind of setup is the foundation for every modern application. Its used in websites, mobile app backends and APIs.
 
-This software is a simple "Hello World" web service built with Node.js and the Express framework. When you run it and visit the server in a browser, it responds with a friendly "Hello World" greeting. It also includes a bonus route that greets you by name.
+The software I made is a Hello World" web service. It was built using Node.js and the Express framework. When you run it and go to the server in a browser it sends back a Hello World" message. It also has a route that lets you say your name and gets a personalized greeting.
 
-My purpose in creating this software was to get comfortable with the basic building blocks of a web service: setting up a server, defining routes, handling requests, and returning responses, before moving on to more complex web development topics.
+My goal in building this software was to get comfortable, with the parts of a web service. I wanted to practice setting up a server, defining routes handling requests and sending back responses. I did this because I plan to move on to complex web development topics later. Getting these basics right helps a lot.
 
-[Software Demo Video](http://youtube.link.goes.here)
+Youtube link: 
 
 # Development Environment
 
-I used Visual Studio Code as my IDE and Git/GitHub for version control. I tested the service locally using Node.js and the `curl` command-line tool to send requests to the running server.
+I used Visual Studio Code as my IDE. I used Git/GitHub for version control.
 
-I used JavaScript (Node.js) with the Express web framework to build the service. Express handles the low-level HTTP details and makes it simple to define routes and send responses.
+I tested the service locally using Node.js. I used the `curl` tool to send requests to the running server.
+
+I used JavaScript (Node.js) with the Express web framework to build the service. Express handles the low‑level HTTP details. Express makes it simple to define routes and send responses.
 
 # Useful Websites
 
