@@ -1,0 +1,133 @@
+@page "/tasks/completed"
+@rendermode InteractiveServer
+@inject NavigationManager Navigation
+@inject ITaskService TaskService
+@inject AuthenticationStateProvider AuthProvider
+@using System.Security.Claims
+
+<PageTitle>Completed | My Quest</PageTitle>
+
+<section class="task-page" aria-labelledby="completed-list-heading">
+    <h1 id="completed-list-heading">Completed</h1>
+
+    <div class="task-toolbar">
+        <SearchBar @bind-Value="searchTerm" />
+        <a class="btn-quest-primary" href="tasks/new">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 4v16M4 12h16"></path></svg>
+            Add Task
+        </a>
+    </div>
+
+    @if (IsLoading)
+    {
+        <div class="task-state" role="status" aria-live="polite">
+            <div class="spinner-border spinner-border-sm" aria-hidden="true"></div>
+            <span>Loading tasks…</span>
+        </div>
+    }
+    else if (!string.IsNullOrWhiteSpace(ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>Tasks could not be loaded.</strong>
+            <span>@ErrorMessage</span>
+            <button type="button" class="btn btn-sm btn-outline-danger" @onclick="LoadTasksAsync">Try again</button>
+        </div>
+    }
+    else if (FilteredTasks.Count == 0)
+    {
+        <div class="task-state task-state--empty">
+            <h2>No completed tasks yet</h2>
+            <p>Finished tasks will show up here.</p>
+        </div>
+    }
+    else
+    {
+        <div class="task-list" aria-live="polite">
+            @foreach (var task in FilteredTasks)
+            {
+                <TaskCard @key="task.Id"
+                          Title="@task.Title"
+                          Description="@task.Description"
+                          IsCompleted="@task.IsCompleted"
+                          DueDate="@task.DueDate"
+                          CompletionChanged="completed => SetCompletion(task.Id, completed)"
+                          OnEdit="() => EditTask(task.Id)"
+                          OnDelete="() => DeleteTask(task.Id)" />
+            }
+        </div>
+    }
+</section>
+
+@code {
+    private string searchTerm = string.Empty;
+    private List<TaskListItem> tasks = new();
+    private string? userId;
+
+    private bool IsLoading { get; set; } = true;
+    private string? ErrorMessage { get; set; }
+
+    private IReadOnlyList<TaskListItem> FilteredTasks => tasks
+        .Where(task => string.IsNullOrWhiteSpace(searchTerm)
+            || task.Title.Contains(searchTerm, StringComparison.OrdinalIgnoreCase)
+            || (task.Description?.Contains(searchTerm, StringComparison.OrdinalIgnoreCase) ?? false))
+        .ToList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthProvider.GetAuthenticationStateAsync();
+        userId = authState.User.FindFirstValue(ClaimTypes.NameIdentifier);
+        await LoadTasksAsync();
+    }
+
+    private async Task LoadTasksAsync()
+    {
+        if (userId is null)
+        {
+            ErrorMessage = "You must be logged in to view tasks.";
+            IsLoading = false;
+            return;
+        }
+
+        IsLoading = true;
+        ErrorMessage = null;
+
+        try
+        {
+            tasks = await TaskService.FilterByStatusAsync(userId, TaskFilter.Completed);
+        }
+        catch (Exception ex)
+        {
+            ErrorMessage = ex.Message;
+        }
+        finally
+        {
+            IsLoading = false;
+        }
+    }
+
+    private async Task SetCompletion(int id, bool completed)
+    {
+        if (userId is null) return;
+
+        var success = await TaskService.ToggleStatusAsync(userId, id);
+        if (success)
+        {
+            // Unchecking here means the task is no longer completed —
+            // it no longer belongs in this view, so drop it instead of updating it in place.
+            tasks = tasks.Where(task => task.Id != id).ToList();
+        }
+    }
+
+    private async Task DeleteTask(int id)
+    {
+        if (userId is null) return;
+
+        var success = await TaskService.DeleteAsync(userId, id);
+        if (success)
+        {
+            tasks = tasks.Where(task => task.Id != id).ToList();
+        }
+    }
+
+    private void EditTask(int id) => Navigation.NavigateTo($"tasks/new?edit={id}");
+}
