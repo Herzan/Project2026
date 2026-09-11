@@ -6,7 +6,7 @@ The software I made is a Task Manager command-line program. It was built with Ja
 
 My goal in building this software was to become comfortable with core programming concepts in JavaScript such as variables, functions arrays, objects, loops and conditional logic. I wanted to practice reading user input updating a data structure based on that input and showing results back, to the user clearly. I did this because I plan to build on these fundamentals with complex JavaScript projects later. Getting these basics right helps a lot.
 
-Youtube link: 
+Youtube link: https://www.youtube.com/watch?v=pBZEdSA8-Zo 
 
 # Development Environment
 
