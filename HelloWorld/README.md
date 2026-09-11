@@ -6,7 +6,7 @@ The software I made is a Hello World" web service. It was built using Node.js an
 
 My goal in building this software was to get comfortable, with the parts of a web service. I wanted to practice setting up a server, defining routes handling requests and sending back responses. I did this because I plan to move on to complex web development topics later. Getting these basics right helps a lot.
 
-Youtube link: 
+Youtube link: https://www.youtube.com/watch?v=88Iohkseg9A 
 
 # Development Environment
 
