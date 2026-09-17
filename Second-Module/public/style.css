@@ -1,0 +1,70 @@
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+body { background: #f0f2f5; min-height: 100vh; display: flex; justify-content: center; padding: 40px 20px; }
+.container { width: 100%; max-width: 560px; }
+h1 { color: #1a1a2e; margin-bottom: 20px; text-align: center; }
+
+/* Add form */
+.input-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+.input-row input[type="text"] { padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; }
+#taskInput { flex: 2 1 200px; }
+#assigneeInput { flex: 1 1 140px; }
+.input-row input[type="text"]:focus { outline: none; border-color: #4f6df5; }
+button { border: none; border-radius: 8px; cursor: pointer; font-size: 15px; }
+.btn-add { background: #4f6df5; color: #fff; padding: 12px 22px; }
+.btn-add:hover { background: #3a56d4; }
+
+/* Toolbar: search + assignee filter + status tabs */
+.toolbar { background: #fff; border-radius: 10px; padding: 12px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+.search-row { display: flex; gap: 10px; margin-bottom: 10px; }
+#searchInput { flex: 1; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+#searchInput:focus { outline: none; border-color: #4f6df5; }
+#assigneeFilter { padding: 10px 8px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; background: #fff; max-width: 150px; }
+
+.filter-row { display: flex; gap: 8px; }
+.filter-btn { flex: 1; background: #f0f2f5; color: #555; padding: 8px; font-size: 13px; font-weight: 600; border-radius: 6px; }
+.filter-btn:hover { background: #e4e7ee; }
+.filter-btn.active { background: #4f6df5; color: #fff; }
+
+.stats { text-align: center; color: #666; margin-bottom: 12px; font-size: 13px; }
+
+/* Task list */
+ul { list-style: none; }
+li { background: #fff; padding: 12px 14px; margin-bottom: 10px; border-radius: 10px;
+     display: flex; align-items: center; gap: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+li.done .task-title { text-decoration: line-through; color: #999; }
+.chk { width: 18px; height: 18px; cursor: pointer; accent-color: #4f6df5; flex-shrink: 0; }
+
+.task-main { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.task-title { cursor: text; word-break: break-word; }
+li.editing .task-main { flex-direction: row; gap: 8px; }
+.edit-title, .edit-assignee { padding: 6px 8px; border: 1px solid #4f6df5; border-radius: 6px; font-size: 14px; }
+.edit-title { flex: 2; min-width: 0; }
+.edit-assignee { flex: 1; min-width: 0; }
+
+.assignee-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #666; width: fit-content; }
+.avatar { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px;
+          border-radius: 50%; background: #e2e8ff; color: #4f6df5; font-size: 10px; font-weight: 700; }
+
+.btn-edit { background: transparent; padding: 6px 8px; font-size: 15px; flex-shrink: 0; }
+.btn-edit:hover { background: #f0f2f5; }
+.btn-del { background: #e74c3c; color: #fff; padding: 8px 14px; font-size: 13px; flex-shrink: 0; }
+.btn-del:hover { background: #c0392b; }
+.btn-save { background: #2ecc71; color: #fff; padding: 8px 10px; flex-shrink: 0; }
+.btn-save:hover { background: #27ae60; }
+.btn-cancel { background: #f0f2f5; color: #555; padding: 8px 10px; flex-shrink: 0; }
+.btn-cancel:hover { background: #e4e7ee; }
+
+.empty { text-align: center; color: #999; padding: 30px 20px; background: #fff; border-radius: 10px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+
+/* Toast */
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(20px);
+         background: #1a1a2e; color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 14px;
+         opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast.error { background: #c0392b; }
+
+@media (max-width: 480px) {
+  .input-row { flex-direction: column; }
+  .search-row { flex-direction: column; }
+  #assigneeFilter { max-width: none; }
+}

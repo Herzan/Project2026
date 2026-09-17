@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>✅ Task Manager</h1>
+
+    <form id="addForm" class="input-row">
+      <input type="text" id="taskInput" placeholder="Enter a new task..." autocomplete="off" required />
+      <input type="text" id="assigneeInput" placeholder="Assign to (username)" autocomplete="off" list="assigneeOptions" />
+      <datalist id="assigneeOptions"></datalist>
+      <button type="submit" class="btn-add">Add</button>
+    </form>
+
+    <div class="toolbar">
+      <div class="search-row">
+        <input type="text" id="searchInput" placeholder="🔍 Search by title or assignee..." autocomplete="off" />
+        <select id="assigneeFilter">
+          <option value="">All assignees</option>
+        </select>
+      </div>
+      <div class="filter-row" id="statusFilter">
+        <button class="filter-btn active" data-status="all">All</button>
+        <button class="filter-btn" data-status="active">Active</button>
+        <button class="filter-btn" data-status="completed">Completed</button>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+    <ul id="taskList"></ul>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
