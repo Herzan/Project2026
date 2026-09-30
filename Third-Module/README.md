@@ -21,6 +21,10 @@ To wipe and reload the sample data at any time: `npm run seed`.
 
 The two "vulnerabilities" that npm reports are in development tools and can be ignored. Do not run `npm audit fix --force`.
 
+## Deploy online
+
+See **DEPLOY.md** for the Render + MongoDB Atlas step-by-step guide (`render.yaml` is included).
+
 ## Seed accounts
 
 | Username | Password  |
