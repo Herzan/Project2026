@@ -70,7 +70,7 @@ I built this mainly to practice key JavaScript basics. I focused on variables an
 
 I did this so I can move on to bigger JavaScript projects later. Learning the basic pieces first makes future work easier.
 
-Youtube link: https://www.youtube.com/watch?v=OZWt46d1mL4
+Youtube link: https://www.youtube.com/watch?v=2AuTxRhfZt4&feature=youtu.be 
 
 # Development Environment
 
