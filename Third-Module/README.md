@@ -11,8 +11,10 @@ Express + MongoDB API (JWT login) and a Vite + React frontend, started together 
 ## Quick start (any system)
 
 ```bash
+npm install     #Installs the root-level dependencies listed in the project’s package.json.
+npm run seed     #Runs a seed script (defined in package.json).
 npm run setup      # installs backend + frontend packages (first time only)
-cp .env.example .env
+cp .env.example .env    #copy run example to .env
 npm run dev:all    # starts API (port 3000) and website (port 5173) together
 ```
 
