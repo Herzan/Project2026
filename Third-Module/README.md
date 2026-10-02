@@ -60,21 +60,23 @@ You can also create your own account with the "Sign up" link on the login page.
 
 # Overview
 
-As a software engineer I wanted to strengthen my JavaScript skills by creating a program that solves a problem: keeping track of tasks. I was curious how a program could store data let a user add and update items and keep that information organized while the program runs.
+I am a software engineer, and I wanted to get better at JavaScript. I built a small program to handle one simple job: tasks. I kept wondering how software can hold data, let a person change it, and still keep everything in order while it is running.
 
-The software I made is a Task Manager command-line program. The software was built with JavaScript running on Node.js. When you run the software the software shows a menu that allows you to add a task view all tasks mark a task as complete and delete a task. Each task records its description and its completion status.
+What I made is a Task Manager that works in the command line. I wrote it with JavaScript and ran it with Node.js. After you start it, a menu appears. From there you can add a task, see all tasks, mark a task as done, or remove a task. Each entry has a text note and a status that shows if it is finished.
 
-My goal in building the software was to become comfortable with core programming concepts in JavaScript such as variables, functions arrays, objects, loops and conditional logic. I wanted to practice reading user input updating a data structure based on that input and showing results back to the user clearly. I did this because I plan to build on these fundamentals, with JavaScript projects later. Getting the basics right helps a lot.
+I built this mainly to practice key JavaScript basics. I focused on variables and functions. I also worked with arrays and objects. Loops mattered too, along with if checks and other conditions. I wanted to practice taking what the user types, then updating my data model based on that input. After that, the program shows the result back in a clear way.
+
+I did this so I can move on to bigger JavaScript projects later. Learning the basic pieces first makes future work easier.
 
 Youtube link: https://www.youtube.com/watch?v=OZWt46d1mL4
 
 # Development Environment
 
-I used Visual Studio Code as my IDE. I used Git/GitHub for version control.
+I worked in Visual Studio Code as my IDE. I also used Git and GitHub to track changes.
 
-I tested the program locally using Node.js. I tested each menu option manually by running the program and entering inputs to make sure tasks were added, listed completed and removed correctly.
+For testing, I ran the app on my computer with Node.js. I tried each menu item by hand, started the program, typed the inputs, and checked that the tasks showed up. I also confirmed that completed items were marked and that removed items were gone.
 
-I used JavaScript (Node.js) to build this program. I used the built-in readline module to read input, from the user. I used standard JavaScript arrays and objects to store and manage the list of tasks.
+The program was written in JavaScript with Node.js. I relied on the readline module to get text from the user. I stored the task data in normal JavaScript arrays and objects, and I used them to keep the list updated.
 
 # Useful Websites
 
